@@ -1,5 +1,5 @@
 import { IKpiCards } from "@/types/components/Cards"
-import { Box, Chip, Grid, Typography } from "@mui/material"
+import { Box, Chip, ChipProps, Grid, Typography } from "@mui/material"
 
 export const KpiCards = ({ title, number, icon: Icon, colorMetric, colorChip, chipText }: IKpiCards) => {
     return (
@@ -29,7 +29,7 @@ export const KpiCards = ({ title, number, icon: Icon, colorMetric, colorChip, ch
                     <Box pt="1rem">
                         <Chip
                             label={ chipText }
-                            color={ colorChip }
+                            color={(colorChip ?? undefined) as ChipProps["color"]}
                             sx={{
                                 fontSize: "0.75rem",
                                 fontWeight: 600,

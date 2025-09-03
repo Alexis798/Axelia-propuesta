@@ -16,7 +16,6 @@ type DonutChartCardProps = {
   heightRem?: number;
   innerRadiusRem?: number;
   outerRadiusRem?: number;
-
   showLegend?: boolean;
 };
 
@@ -34,8 +33,9 @@ function useRootFontSize(): number {
 
 export function DonutChartCard({
   data,
-  width = 320,
-  height = 280,
+  // ⬇️ Defaults alineados con BarChartCard
+  width,
+  height,
   innerRadius = 70,
   outerRadius = 110,
   widthRem,
@@ -45,8 +45,10 @@ export function DonutChartCard({
   showLegend = true,
 }: DonutChartCardProps) {
   const root = useRootFontSize();
-  const w = widthRem !== undefined ? Math.round(widthRem * root) : width;
-  const h = heightRem !== undefined ? Math.round(heightRem * root) : height;
+
+  // ⬇️ Misma prioridad: rem > px > default
+  const w = widthRem !== undefined ? Math.round(widthRem * root) : (width ?? 320);
+  const h = heightRem !== undefined ? Math.round(heightRem * root) : (height ?? 250);
   const ir = innerRadiusRem !== undefined ? Math.round(innerRadiusRem * root) : innerRadius;
   const or = outerRadiusRem !== undefined ? Math.round(outerRadiusRem * root) : outerRadius;
 
@@ -68,11 +70,18 @@ export function DonutChartCard({
       ]}
       width={w}
       height={h}
-      slotProps={{
-        legend: showLegend
-          ? { direction: "row", position: { vertical: "bottom", horizontal: "middle" } }
-          : { hidden: true },
-      }}
+      // Deja espacio para la leyenda abajo (no empuja a la derecha)
+      margin={{ top: 8, right: 8, bottom: showLegend ? 56 : 8, left: 8 }}
+      // Sin 'direction' ni 'hidden' para evitar TS2322
+      slotProps={
+        showLegend
+          ? {
+              legend: {
+                position: { vertical: "bottom", horizontal: "center" } as const,
+              },
+            }
+          : undefined
+      }
     />
   );
 }

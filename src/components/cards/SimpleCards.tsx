@@ -4,8 +4,8 @@ export const SimpleCard = ({ children, title } : { children: React.ReactNode; ti
     return (
         <Grid 
             container 
-            direction="row"
-            justifyContent="space-between"
+            direction="column"
+            justifyContent="left"
             minHeight="25.8rem"
             maxHeight="25.8rem"
             sx={{
@@ -21,8 +21,12 @@ export const SimpleCard = ({ children, title } : { children: React.ReactNode; ti
                 },
             }}
         >
-            <Typography variant="h6" mb={2} color="#6c757d" fontWeight={700}>{title}</Typography>
-            { children }
+            <Grid size={12}>
+                <Typography variant="h6" mb={2} color="#6c757d" fontWeight={700}>{title}</Typography>
+            </Grid>
+            <Grid size={12}>
+                { children }
+            </Grid>
         </Grid>
     )
 }

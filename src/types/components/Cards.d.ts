@@ -8,6 +8,6 @@ export interface IKpiCards {
     number: string;
     icon: OverridableComponent<SvgIconTypeMap>;
     colorMetric: string;
-    colorChip?: string;
+    colorChip?: string | null;
     chipText?: string
 }

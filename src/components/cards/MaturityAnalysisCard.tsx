@@ -115,7 +115,7 @@ export function MaturityAnalysisCard({
 
         <Grid container spacing={4} alignItems="center">
           {/* Izquierda: Gauge */}
-          <Grid item xs={12} md={6}>
+          <Grid size={{ xs: 12, md: 6 }}>
             <Typography
               variant="subtitle1"
               mb={1}
@@ -167,19 +167,19 @@ export function MaturityAnalysisCard({
           </Grid>
 
           {/* Derecha: análisis */}
-          <Grid item xs={12} md={6}>
+          <Grid size={{ xs: 12, md: 6 }}>
             <Typography variant="h6" sx={{ mb: 2, color: "#3f2b96" }}>
               Análisis de Madurez
             </Typography>
 
             <Grid container spacing={2} alignItems="center">
               {/* Objetivo */}
-              <Grid item xs={7}>
+              <Grid size={7}>
                 <Typography variant="body2" color="text.secondary">
                   Nivel Objetivo:
                 </Typography>
               </Grid>
-              <Grid item xs={5} textAlign="right">
+              <Grid size={5} textAlign="right">
                 <Box
                   sx={{
                     display: "inline-flex",
@@ -195,12 +195,12 @@ export function MaturityAnalysisCard({
               </Grid>
 
               {/* Tendencia */}
-              <Grid item xs={7}>
+              <Grid size={7}>
                 <Typography variant="body2" color="text.secondary">
                   Tendencia Trimestral:
                 </Typography>
               </Grid>
-              <Grid item xs={5} textAlign="right">
+              <Grid size={5} textAlign="right">
                 <Box
                   sx={{
                     display: "inline-flex",

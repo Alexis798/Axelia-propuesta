@@ -32,6 +32,21 @@ export default function Home() {
             ))}
           </Grid>
 
+          {/* Fila 0 */}
+          <Grid container direction="row" justifyContent="space-between" spacing={2} mt="1rem" mb="1rem">
+            <Grid size={{ xs: 12 }}>
+              <SimpleCard title="Controles">
+                <DonutChartCard
+                  data={[
+                    { label: "Adoptado", value: 100, color: "#66bb6a" },
+                    { label: "No Adoptado", value: 0, color: "#ef5350" },
+                    { label: "No Evaluado", value: 0, color: "#ffa726" },
+                  ]}
+                />
+              </SimpleCard>
+            </Grid>
+          </Grid>
+
           {/* Fila 1 */}
           <Grid container direction="row" justifyContent="space-between" spacing={2} mt="1rem" mb="1rem">
             <Grid size={{ xs: 12, md: 6}}>
@@ -96,6 +111,38 @@ export default function Home() {
               </SimpleCard>
             </Grid>
             <Grid size={{ xs: 12, md: 6}}>
+              <SimpleCard title="Evaluación Riesgos Residuales">
+                <HeatmapMatrixCard
+                  xLabels={["1", "2", "3"]}
+                  yLabels={["1", "2", "3"]}
+                  matrix={[
+                    [555, 50, 0],   // y=1
+                    [491, 9, 1],    // y=2
+                    [0, 0, 0],      // y=3
+                  ]}
+                  colorScale={["#2e7d32", "#ffee58", "#d32f2f"]}
+                />
+              </SimpleCard>
+            </Grid>
+          </Grid>
+
+          {/* Fila 4 */}
+          <Grid container direction="row" justifyContent="space-between" spacing={2} mt="1rem" mb="1rem">
+            <Grid size={{ xs: 12, md: 8}}>
+              <SimpleCard title="Evaluación Riesgos Inicial">
+                <HeatmapMatrixCard
+                  xLabels={["1", "2", "3"]}     // Prob
+                  yLabels={["1", "2", "3"]}     // Imp (de abajo a arriba)
+                  matrix={[
+                    [1, 7, 1],      // y=1
+                    [56, 412, 73],  // y=2
+                    [31, 735, 15],  // y=3
+                  ]}
+                  colorScale={["#2e7d32", "#ffee58", "#d32f2f"]}
+                />
+              </SimpleCard>
+            </Grid>
+            <Grid size={{ xs: 12, md: 4}}>
               <SimpleCard title="Evaluación Riesgos Residuales">
                 <HeatmapMatrixCard
                   xLabels={["1", "2", "3"]}

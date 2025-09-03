@@ -1,11 +1,12 @@
 import { HomeOutlined, NotificationsOutlined } from "@mui/icons-material"
-import { Avatar, Breadcrumbs, Grid, Typography } from "@mui/material"
-import Link from "next/link"
+import { Avatar, Breadcrumbs, Grid, Link, Typography } from "@mui/material"
+import NextLink from "next/link";
+
 
 export const HeaderComponent = () => {
     return (
         <Grid container direction="row" justifyContent="space-between" alignItems="center" sx={{ backgroundColor: '#FFF' }} px="30px" height="6.25rem">
-            <Grid size={10}>
+            <Grid size={{ xs: 6, sm: 8, md: 10 }}>
                 <Grid container justifyContent="center" alignItems="center" height="2.5rem" sx={{ backgroundColor: "rgba(248,249,250,0.9)", borderRadius: '.5rem' }}>
                     <Breadcrumbs
                         aria-label="breadcrumb"
@@ -14,17 +15,23 @@ export const HeaderComponent = () => {
                         >
                         {/* Primer nivel con ícono */}
                         <Link
+                            component={NextLink}
                             underline="hover"
                             color="inherit"
                             href="/"
                             sx={{ display: "flex", alignItems: "center" }}
-                        >
-                            <HomeOutlined sx={{ mr: 0.5, fontSize: "1rem", verticalAlign: 'middle' }} />
+                            >
+                            <HomeOutlined sx={{ mr: 0.5, fontSize: "1rem", verticalAlign: "middle" }} />
                             Organizaciones
                         </Link>
 
                         {/* Segundo nivel */}
-                        <Link underline="hover" color="inherit" href="/organizaciones/axelia">
+                        <Link
+                            component={NextLink}
+                            underline="hover"
+                            color="inherit"
+                            href="/organizaciones/axelia"
+                        >
                             Axelia
                         </Link>
 
@@ -33,7 +40,7 @@ export const HeaderComponent = () => {
                     </Breadcrumbs>
                 </Grid>
             </Grid>
-            <Grid size={2}>
+            <Grid size={{ xs: 6, sm: 4, md: 2}}>
                 <Grid container justifyContent="space-between" alignItems="center">
                     <Grid size={6}>
                         <Grid container justifyContent="center">
@@ -41,7 +48,7 @@ export const HeaderComponent = () => {
                         </Grid>
                     </Grid>
                     <Grid size={6}>
-                        <Grid container direction="row">
+                        <Grid container direction="row" spacing={2}>
                             <Grid size={6}>
                                 <Avatar sx={{ width: '2.5rem', height: '2.5rem', backgroundColor: 'green' }}>AN</Avatar>
                             </Grid>
