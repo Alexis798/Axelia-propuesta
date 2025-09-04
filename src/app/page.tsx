@@ -1,6 +1,6 @@
 import { HeaderComponent } from "@/components/headerComponent";
 import { TitleCards } from "@/components/cards/TitleCards";
-import { ListAltRounded, LockOpenOutlined, Shield } from "@mui/icons-material";
+import { ListAltRounded, LockOpenOutlined, Shield, TimelineRounded, WatchLaterRounded } from "@mui/icons-material";
 import { KpiCards } from "@/components/cards/KPICards";
 import { Grid } from "@mui/material";
 import { SimpleCard } from "@/components/cards/SimpleCards";
@@ -8,6 +8,11 @@ import { DonutChartCard } from "@/components/charts/DonutChartCard";
 import { BarChartCard } from "@/components/charts/BarChartCard";
 import { HeatmapMatrixCard } from "@/components/charts/HeatmapChartCard";
 import { HorizontalBarChartCard } from "@/components/charts/HorizontalBarChartCard";
+import { IconCard } from "@/components/cards/IconCards";
+import { TimelineItem, TimelineList } from "@/components/list/TimeLineList";
+import { ListCards } from "@/components/list/ListCards";
+import { MainCard } from "@/components/cards/MainCard";
+import { GaugeDial } from "@/components/charts/GaulDial";
 
 export default function Home() {
 
@@ -16,6 +21,37 @@ export default function Home() {
     { title: "Tareas Pendientes", number: "204", icon: ListAltRounded, colorMetric: "#ffc107", chipText: "147 vencidas", colorChip: "error" },
     { title: "Tareas Pendientes", number: "91.67%", icon: LockOpenOutlined, colorMetric: "#198754", chipText: "22/24 activos", colorChip: "primary" },
   ]
+
+  const demoItems: TimelineItem[] = [
+    {
+      id: "1",
+      datetimeISO: "2025-09-02T18:09:06Z",
+      title:
+        "Controles [8.25] actualizado. Descripción: Deben establecerse y aplicarse normas para el desarrollo de sof...>",
+      tagLabel: "Módulo: Controles",
+      tagColor: "success",
+    },
+    {
+      id: "2",
+      datetimeISO: "2025-09-02T18:09:06Z",
+      title:
+        "Controles [8.20] actualizado. Descripción: Las redes y los dispositivos de red deben ser",
+      subtitle: " asegurados, gestionados ...>",
+      tagLabel: "Módulo: Controles",
+      tagColor: "success",
+    },
+    {
+      id: "3",
+      datetimeISO: "2025-09-02T18:09:06Z",
+      title:
+        "Controles [8.16] actualizado. Descripción: Las redes, sistemas y aplicaciones deben ser",
+      subtitle: " monitorizados en busca de...>",
+      tagLabel: "Módulo: Controles",
+      tagColor: "success",
+    },
+  ];
+
+  const PruebaList = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }]
 
   return (
     <div>
@@ -35,15 +71,9 @@ export default function Home() {
           {/* Fila 0 */}
           <Grid container direction="row" justifyContent="space-between" spacing={2} mt="1rem" mb="1rem">
             <Grid size={{ xs: 12 }}>
-              <SimpleCard title="Controles">
-                <DonutChartCard
-                  data={[
-                    { label: "Adoptado", value: 100, color: "#66bb6a" },
-                    { label: "No Adoptado", value: 0, color: "#ef5350" },
-                    { label: "No Evaluado", value: 0, color: "#ffa726" },
-                  ]}
-                />
-              </SimpleCard>
+              <MainCard title="Nivel de Madurez">
+                <GaugeDial value={45.93} label="Porcentaje" />
+              </MainCard>
             </Grid>
           </Grid>
 
@@ -129,32 +159,25 @@ export default function Home() {
           {/* Fila 4 */}
           <Grid container direction="row" justifyContent="space-between" spacing={2} mt="1rem" mb="1rem">
             <Grid size={{ xs: 12, md: 8}}>
-              <SimpleCard title="Evaluación Riesgos Inicial">
-                <HeatmapMatrixCard
-                  xLabels={["1", "2", "3"]}     // Prob
-                  yLabels={["1", "2", "3"]}     // Imp (de abajo a arriba)
-                  matrix={[
-                    [1, 7, 1],      // y=1
-                    [56, 412, 73],  // y=2
-                    [31, 735, 15],  // y=3
-                  ]}
-                  colorScale={["#2e7d32", "#ffee58", "#d32f2f"]}
+              <IconCard title="Eventos Recientes" icon={ TimelineRounded }>
+                <TimelineList
+                  items={demoItems}
+                  lineColor="#d32f2f"
+                  maxItemWidth="100%"
                 />
-              </SimpleCard>
+              </IconCard>
             </Grid>
             <Grid size={{ xs: 12, md: 4}}>
-              <SimpleCard title="Evaluación Riesgos Residuales">
-                <HeatmapMatrixCard
-                  xLabels={["1", "2", "3"]}
-                  yLabels={["1", "2", "3"]}
-                  matrix={[
-                    [555, 50, 0],   // y=1
-                    [491, 9, 1],    // y=2
-                    [0, 0, 0],      // y=3
-                  ]}
-                  colorScale={["#2e7d32", "#ffee58", "#d32f2f"]}
-                />
-              </SimpleCard>
+              <IconCard title="Tareas Próximas a Vencer" icon={ WatchLaterRounded }>
+                <Grid container direction="row" sx={{ maxHeight: "14rem", overflow: "auto" }}>
+                  {PruebaList.map(( item, index ) => (
+                    <Grid size={12} key={item.id ?? index} mb="2rem">
+                      <ListCards />
+                    </Grid>
+                  ))}  
+                </Grid>
+                         
+              </IconCard>
             </Grid>
           </Grid>
 

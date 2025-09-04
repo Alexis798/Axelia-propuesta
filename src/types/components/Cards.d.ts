@@ -11,3 +11,9 @@ export interface IKpiCards {
     colorChip?: string | null;
     chipText?: string
 }
+
+export interface IIconCards {
+    children: React.ReactNode;
+    title: string;
+    icon: OverridableComponent<SvgIconTypeMap>
+}

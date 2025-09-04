@@ -5,9 +5,9 @@ import NextLink from "next/link";
 
 export const HeaderComponent = () => {
     return (
-        <Grid container direction="row" justifyContent="space-between" alignItems="center" sx={{ backgroundColor: '#FFF' }} px="30px" height="6.25rem">
+        <Grid container direction="row" justifyContent="space-between" alignItems="center" sx={{ backgroundColor: '#FFF' }} px={{ xs: 0, lg: "12.5rem" }} pl={{ xs: '6rem'  }} pr={{ xs: '2rem' }} height="6.25rem">
             <Grid size={{ xs: 6, sm: 8, md: 10 }}>
-                <Grid container justifyContent="center" alignItems="center" height="2.5rem" sx={{ backgroundColor: "rgba(248,249,250,0.9)", borderRadius: '.5rem' }}>
+                <Grid container justifyContent="left" alignItems="center" height="2.5rem" pl="1.5rem" sx={{ backgroundColor: "rgba(248,249,250,0.9)", borderRadius: '.5rem' }}>
                     <Breadcrumbs
                         aria-label="breadcrumb"
                         separator="/"
@@ -48,7 +48,7 @@ export const HeaderComponent = () => {
                         </Grid>
                     </Grid>
                     <Grid size={6}>
-                        <Grid container direction="row" spacing={2}>
+                        <Grid container direction="row" spacing={1}>
                             <Grid size={6}>
                                 <Avatar sx={{ width: '2.5rem', height: '2.5rem', backgroundColor: 'green' }}>AN</Avatar>
                             </Grid>

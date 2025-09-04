@@ -47,24 +47,11 @@ export function VerticalAppBar({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        py: 1,
         gap: 1.25,
-        background:
-          "linear-gradient(180deg, #6f42c1 0%, #7b61ff 50%, #6f42c1 100%)",
+        backgroundColor: '#7e26ec',
         boxShadow: "2px 0 14px rgba(0,0,0,0.25)",
         borderRight: "1px solid rgba(255,255,255,0.15)",
         zIndex: (t) => t.zIndex.appBar,
-        // franja superior
-        "&::before": {
-          content: '""',
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          height: 6,
-          background:
-            "linear-gradient(90deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05))",
-        },
       }}
     >
       {/* Botón menú */}
